@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+    <title>COVID-19 TRACKER</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    
+</head>
+<body>
+    <div class="map"><iframe src="https://createaclickablemap.com/map.php?&id=101126&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe>
+    <script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.datant.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script>
+    <p id="map"></p>
+    </div>
+    <div class="wrapper">
+        <div class="statistic">
+            <div class="state_case_box">
+                <h2>State</h2>
+                <p id="state"></p>
+            </div>
+            
+            
+            <div class="total_case_box">
+                <h2>Total Cases</h2>
+                <p id="total_cases"></p>
+            </div>
+           <div class="box_wrapper">
+                <div class="box">
+                    <h2>Total Deaths</h2>
+                    <p id="total_death"> </p>
+                </div>
+
+                <div class="box">
+                    <h2>Total Recovered</h2>
+                    <p id="total_recovered"> </p>
+                </div>
+
+                <div class="box">
+                    <h2>New cases</h2>
+                    <p id="new_case"> </p>
+                </div>
+
+                <div class="box">
+                    <h2>New Deaths</h2>
+                    <p id="new_death"> </p>
+                </div>
+                
+                <div class="box">
+                    <h2>Currently Hospitalized</h2>
+                    <p id="in_hospital"> </p>
+                </div>
+           </div> 
+        
+           
+        </div class="comments">
+            <h2>Comments</h2>
+        <div>
+
+        </div>
+    </div>
+
+    <script src='index.js'></script>
+</body>
+</html>
