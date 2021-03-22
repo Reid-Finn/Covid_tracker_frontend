@@ -7,20 +7,20 @@ let total_cases = document.getElementById("total_cases");
 let state_name = document.getElementById("state_name")
 const postButton = document.getElementById("submit")
 //state class
-class State {
-	constructor(state) {
-		this.id = state.id
-		this.name = state.name
-		this.confirmed = state.confirmed
-		this.newconfirmed = state.newconfirmed
-		this.deaths = state.deaths
-		this.newdeaths = state.newdeaths
-		this.code = state.code
-		State.all.push(this)
-	}
-}
+// class State {
+// 	constructor(state) {
+// 		this.id = state.id
+// 		this.name = state.name
+// 		this.confirmed = state.confirmed
+// 		this.newconfirmed = state.newconfirmed
+// 		this.deaths = state.deaths
+// 		this.newdeaths = state.newdeaths
+// 		this.code = state.code
+// 		State.all.push(this)
+// 	}
+// }
 
-State.all = [];
+//State.all = [];
 
 class Comment {
 	constructor(comment) {
@@ -47,21 +47,10 @@ function makeButtons(){
         }
     })
 	.then(response => response.json())
-	.then(states =>{
-
-    	states.data.forEach(state =>{
-       	const stateButtonString = `<button id=${state.code} class= "state"> ${state.code} </button>`
-       	document.querySelector('.buttons').innerHTML += stateButtonString
-	
-	   	new State(state, state.attributes)
-	})
-
-		let array = Array.from(document.getElementsByClassName(`state`))
-		array.forEach(button => button.addEventListener("click", (e)=>{getCovidData(button)}))
-		array.forEach(button => button.addEventListener("click", (e)=>{indexComments(button)}))
-	})
-		
+	.then(states => State.assignStates(states))
 }
+
+
 //gets and displays all the COVID data for a particular state
 function getCovidData(button) {
 	let stateCovidData = State.all.filter(state => {
@@ -113,10 +102,8 @@ function postComment(statename){
 			})
 		  })
 			.then(response => response.json())
-			.then(data => {
-			  console.log(data);
-			  indexComments;
-			});
+			.then(indexComments(statename))
+		
 		}
 
 
@@ -127,14 +114,11 @@ function postComment(statename){
 
 // fetch comments(read)
 function indexComments(stateButton){
-	console.log(stateButton)
 	let stateData = State.all.filter(state => {
 		return state.code === stateButton.id;
 		
 	})
-	
-	clearEle(document.getElementById("stateComments"));
-	document.getElementById("stateComments").innerHTML += 
+	document.getElementById("stateComments").innerHTML = 
 		`<div id="post-div">
 			<input id="post-input" type="text">
 			<button onClick= "postComment('${stateData[0].name}')">Post a Comment</button>
